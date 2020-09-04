@@ -73,6 +73,40 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+	          <artifactId>maven-antrun-plugin</artifactId>
+	          <executions>
+	              <execution>
+	                  <phase>package</phase>
+	                  <goals>
+	                    <goal>run</goal>
+	                  </goals>
+	                  <id>obfuscate</id>
+	                  <configuration>
+	                      <tasks>
+	                        <property name="runtime_classpath" refid="maven.runtime.classpath"/>
+	                        <taskdef name="yguard" classname="com.yworks.yguard.YGuardTask" classpath="${runtime_classpath}"/>
+	                        <yguard>
+	                          <inoutpair in="${project.build.directory}/${project.build.finalName}.jar" out="${project.build.directory}/${project.build.finalName}_obfuscated.jar" />
+	                          <rename mainclass="com.pnwd.account.**" logfile="${project.build.directory}/yguard.log.xml">
+	                            <property name="error-checking" value="pedantic"/>
+	                            <property name="language-conformity" value="illegal" />
+								<property name="naming-scheme" value="mix" />
+								<keep>
+									<class classes="private" methods="private" fields="private">
+										<patternset>
+											<include name="org.**" />
+										</patternset>
+									</class>
+									<class name="com.pnwd.account.Account" methods="private" fields="private"/>
+								</keep>
+	                          </rename>
+	                        </yguard>
+	                      </tasks>
+	                  </configuration>
+	              </execution>
+	          </executions>
+	      </plugin>
 		</plugins>
 	</build>
 
