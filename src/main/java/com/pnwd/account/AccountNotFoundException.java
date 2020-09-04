@@ -1,9 +1,5 @@
 package com.pnwd.account;
 
-/**
- * @author Putu Ngurah Wigadoni
- *
- */
 public class AccountNotFoundException extends RuntimeException{
 
 	/**

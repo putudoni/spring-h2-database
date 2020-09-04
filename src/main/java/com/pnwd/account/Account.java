@@ -7,10 +7,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-/**
- * @author Putu Ngurah Wigadoni
- *
- */
 @Entity
 @Table(name = "account")
 public class Account {

@@ -7,10 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-/**
- * @author Putu Ngurah Wigadoni
- *
- */
 @Component
 public class AppCommandLineRunner implements CommandLineRunner {
 
